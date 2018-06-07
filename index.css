@@ -1,0 +1,181 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	min-height: 500px;
+	min-width: 300px;
+	max-height: 500px;
+	max-width: 300px;
+	margin: 0px;
+	background-color: rgb(70, 133, 236);
+	-webkit-app-region: drag;
+	-webkit-user-select: none;
+	position: fixed; 
+}
+
+.colorButton {
+	background-color: white;
+	border: 1px solid #fff;
+	outline: none;
+	margin: 7.5px;
+	height: 30px;
+	width: 30px;
+	-webkit-app-region: no-drag;
+	display: inline-block;
+	border-radius: 4px;
+  	box-shadow: 0 4px #999;
+}
+
+.colorButton:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+.submitButton {
+	font-family: 'Space Mono', monospace;
+	background-color: white;
+	border: none;
+	outline: none;
+	margin: 7.5px;
+	height: 30px;
+	width: 90px;
+	-webkit-app-region: no-drag;
+	border-radius: 4px;
+	box-shadow: 0 4px #999;
+	vertical-align: bottom;
+	display: inline-block;
+}
+
+.submitButton:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(4px);
+}
+
+.peg {
+	background-color: white;
+	border: none;
+	outline: none;
+	border: 1px solid #999;
+	margin: 3px;
+	margin-top: 8px;
+	height: 15px;
+	width: 15px;
+	border-radius: 3px;
+	display: inline-block;
+}
+
+.titlebar {
+	background: rgb(52, 105, 209);
+	display: flex;
+	height: 30px;
+	width: 100%;
+}
+
+.header {
+	font-family: 'Space Mono', monospace;
+	font-size: 23px;
+	margin-left: 12px;
+	vertical-align: middle;
+	line-height: 60px;
+	height: 50px;
+	color: white;
+}
+
+.rowDiv {
+	margin-left: 6px;
+}
+
+.close {
+	align-self: center;
+	color: black;
+	background-color: white;
+	line-height: 18px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 2px #999;
+	display: inline-block;
+	-webkit-app-region: no-drag;
+	margin-right: 2px;
+	margin-bottom: 2px;
+}
+
+.close:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+
+.settings {
+	align-self: center;
+	color: black;
+	line-height: 18px;
+	background-color: white;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 2px #999;
+	display: inline-block;
+	-webkit-app-region: no-drag;
+	margin-right: 6px;
+	margin-bottom: 2px;
+}
+
+.settings:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+
+.info {
+	align-self: center;
+	color: black;
+	font-size: 15px;
+	line-height: 18px;
+	background-color: white;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 2px #999;
+	display: inline-block;
+	-webkit-app-region: no-drag;
+	margin-left: 114px;
+	margin-right: 6px;
+	margin-bottom: 2px;
+}
+
+.info:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
+
+.stopwatch {
+	font-family: 'Space Mono', monospace;
+	font-size: 15px;
+	margin-left: 12px;
+	vertical-align: bottom;
+	line-height: 30px;
+	height: 30px;
+	color: white;
+}
+
+.pauseButton {
+	align-self: center;
+	color: black;
+	line-height: 18px;
+	margin-left: 8px;
+	background-color: white;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 2px #999;
+	display: inline-block;
+	-webkit-app-region: no-drag;
+	margin-right: 6px;
+	margin-bottom: 2px;
+}
+
+.pauseButton:active {
+	box-shadow: 0 1px #666;
+	transform: translateY(2px);
+}
