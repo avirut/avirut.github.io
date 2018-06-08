@@ -3,11 +3,14 @@
 var closeButton = document.getElementById('closeButton');
 closeButton.addEventListener('click', () => {remote.getCurrentWindow().close()});
 
+var pauseButton;
 var tries = 0;
 var r = 0;
 var cipher;
 var rows = [];
 var timer;
+var timeState;
+var gameState;	//0 = not yet started, 1 = timer started, 2 = game over
 
 class Stopwatch
 {
@@ -59,6 +62,7 @@ class Stopwatch
 			clearInterval(this.interval);
 			this.interval = null;
 		}
+		return this.elapsed;
 	}
 
 	reset()
@@ -253,11 +257,17 @@ function startGame()
 	{
 		rows[i].div.parentNode.removeChild(rows[i].div);
 	}
+	gameState = 0;
 	tries = 0;
 	rows = [];
 	r = 0;
 	cipher = genCipher();
-	timer = new Stopwatch(document.getElementById('stopwatch'), 1);
+	timer = new Stopwatch(document.getElementById('stopwatch'), 10);
+	timer.show();
+	timeState = 'paused';
+	pauseButton = document.getElementById('pauseButton');
+	pauseButton.innerHTML = '▶';
+	pauseButton.addEventListener('click', pause);
 	for (let i = 0; i < 9; i++)
 	{
 		rows.push(new Row(i, 4));
@@ -283,13 +293,53 @@ function updateGame(reds)
 	}
 	if (r == 1)
 	{
+		gameState = 1;
+		timeState = 'paused';
+		pause();
+		timer.start();
+	}
+}
+
+function pause()
+{
+	if (r == 0)
+	{
+		return;
+	}
+	else if (gameState == 2)
+	{
+		pauseButton.innerHTML = '▶';
+		timeState = 'paused';
+		timer.stop();
+	}
+	else if (timeState == 'unpaused') 
+	{
+		timeState = 'paused';
+		pauseButton.innerHTML = '▶';
+		timer.stop();
+		if (rows[8].div.style.visibility == 'hidden')
+		{
+			for (let i = 0; i <= r; i++)
+			{
+				rows[i].div.style.visibility = 'hidden';
+			}
+		}
+	}
+	else
+	{
+		for (let i = 0; i <= r; i++)
+		{
+			rows[i].div.style.visibility = 'visible';
+		}
+		timeState = 'unpaused';
+		pauseButton.innerHTML = '❚❚';
 		timer.start();
 	}
 }
 
 function reveal()
 {
-	timer.stop();
+	gameState = 2;
 	for (let i = 0; i < rows[8].boxList.length; i++)
 	{
 		rows[8].boxList[i].setColor(parseInt(cipher.charAt(i)));
@@ -302,6 +352,7 @@ function reveal()
 	rows[8].submitButton.innerHTML = 'New Game';
 	rows[8].submitButton.addEventListener('click', startGame);
 	rows[8].div.style.visibility = 'visible';
+	pause();
 }
 
 function genCipher() 
